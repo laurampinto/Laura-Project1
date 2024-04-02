@@ -17,10 +17,10 @@ body {
   #game-screen {
     display: none;
     align-content: center;
-    padding: 20px 0px;
+    padding: 20px 65px;
     overflow: hidden;
     position: relative;
-    background-image: url(../images/road.png);
+    background-image: url(../images/road.jpg);
     background-size: cover;
     animation: slide 5s linear infinite;
   }
@@ -47,16 +47,16 @@ body {
   }
   
   .logo-img {
-    width: 350px;
+    width: 250px;
   }
   
-  .arrows-img {
-    width: 150px;
+  .arrow-img {
+    width: 100px;
   }
   
   body button {
     font-size: 30px;
-    background-color: rgb(76, 137, 241);
+    background-color: rgb(7, 69, 7);
     color: #fff;
     padding: 20px 40px;
     border: 0;
