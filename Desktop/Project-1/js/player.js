@@ -17,8 +17,15 @@ class Player {
         this.gameScreen.appendChild(this.element)
     }
     move(){
-        this.left += this.directionX
-        this.top += this.directionY
+        this.left += this.directionX;
+        this.top += this.directionY;
+        if (this.left < 160) {
+            this.left = 160;
+        }
+        if (this.left + this.width > 490) {
+            this.left = 490 - this.width;
+        }
+
         this.updatePosition()
     }
 
