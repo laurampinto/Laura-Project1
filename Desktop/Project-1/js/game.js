@@ -3,7 +3,7 @@ class Game {
         this.startScreen = document.querySelector('#game-intro');
         this.gameScreen = document.querySelector('#game-screen');
         this.gameEndScreen = document.querySelector('#game-container');
-        this.player = new Player(this.gameScreen, 260, 420, 100, 100, '../images/explorer-woman.png');
+        this.player = new Player(this.gameScreen, 260, 450, 60, 60, '../images/explorer-woman.png');
         this.height = 490;
         this.width = 500;
         this.obstacles = [];
@@ -27,11 +27,17 @@ class Game {
             this.gameLoop();
         }, this.gameLoopFrequency);
 
-        this.startObstacleSpawning(3000);
+        this.obstacleInterval = setInterval(() => {
+            this.spawnObstacle('../images/belem-tower.png');
+        }, 3000);
 
-        this.spawnObstacle('../images/imagem_descobrimentos.jpg');
-        this.spawnObstacle('../images/barril-vinho.png');
-        this.spawnObstacle('../images/eletrico-Lisboa.png'); 
+        setInterval(() => {
+            this.spawnObstacle('../images/barril-vinho.png');
+        }, 5000);
+
+        setInterval(() => {
+            this.spawnObstacle('../images/eletrico-Lisboa.png');
+        }, 7000);
     }
 
     gameLoop(){
@@ -66,7 +72,8 @@ class Game {
     }
 
     spawnObstacle (imageSrc) {
-        const obstacle = new Obstacle(this.gameScreenElement, imageSrc)
+        const obstacle = new Obstacle(this.gameScreen, imageSrc);
+        this.obstacles.push(obstacle);
     }
   
     }
