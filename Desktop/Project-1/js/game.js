@@ -14,7 +14,7 @@ class Game {
         this.gameIntervalId = null
         this.gameLoopFrequency = Math.round(1000/60)
         this.obstacleInterval = null;
-        this.gameScreenElement = document.querySelector('#game-screen');
+       
     }
 
     start(){
