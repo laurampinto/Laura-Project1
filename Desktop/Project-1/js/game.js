@@ -113,6 +113,8 @@ class Game {
   endGame() {
     console.log("End!");
     this.gameIsOver = true;
+    const backgroundMusic = document.getElementById("background-music");
+    backgroundMusic.pause();
     //remover o player quando o jogo estiver acabado
     this.player.element.remove();
     //remover todos os obstaculos quando o jogo estiver acabado
