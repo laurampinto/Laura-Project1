@@ -7,6 +7,10 @@ window.onload = function () {
     startGame();
   });
 
+  restartButton.addEventListener("click", () => {
+    location.reload();
+  });
+
   document.addEventListener("keydown", (event) => {
     if (event.code === "ArrowUp") {
       myGame.player.directionY = -3;

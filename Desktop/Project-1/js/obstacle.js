@@ -1,7 +1,7 @@
 class Obstacle {
-  constructor(gameScreen, isPrize) {
+  constructor(gameScreen, isPrize, image) {
     this.gameScreen = gameScreen;
-    this.possiblePositions = [170, 350];
+    this.possiblePositions = [170, 215, 260, 350];
     this.left =
       this.possiblePositions[
         Math.floor(Math.random() * this.possiblePositions.length)
@@ -9,19 +9,7 @@ class Obstacle {
     this.top = -300;
     this.width = 90;
     this.height = 130;
-    //adicionar mais obstaculos
-    this.obstacleImages = [
-      "../images/barril-vinho.png",
-      "../images/belem-tower.png",
-      "../images/eletrico-Lisboa.png",
-      "../images/pastel-de-nata.png",
-      "../images/Porto-wine.png",
-    ];
-    //escolher aleatoriamente 1 obstaculo
-    this.image =
-      this.obstacleImages[
-        Math.floor(Math.random() * this.obstacleImages.length)
-      ];
+    this.image = image;
     this.element = document.createElement("img");
     this.element.src = this.image;
     this.element.style.position = "absolute";
@@ -30,7 +18,6 @@ class Obstacle {
     this.element.style.top = `${this.top}px`;
     this.element.style.left = `${this.left}px`;
     this.prize = isPrize;
-  
 
     this.gameScreen.appendChild(this.element);
   }

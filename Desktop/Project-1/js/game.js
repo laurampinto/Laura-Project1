@@ -2,7 +2,7 @@ class Game {
   constructor() {
     this.startScreen = document.querySelector("#game-intro");
     this.gameScreen = document.querySelector("#game-screen");
-    this.gameEndScreen = document.querySelector("#game-container");
+    this.gameEndScreen = document.querySelector("#game-end");
     this.livesElement = document.querySelector("#lives");
     this.scoreElement = document.querySelector("#score");
     this.livesElement = document.querySelector("#lives");
@@ -16,12 +16,12 @@ class Game {
     );
     this.height = 490;
     this.width = 500;
-    this.obstacles = [new Obstacle(this.gameScreen)];
+    this.obstacles = [];
     this.score = 0;
     this.lives = 3;
     this.gameIsOver = false;
     this.gameIntervalId = null;
-    this.gameLoopFrequency = Math.round(1000 / 60);
+    this.gameLoopFrequency = Math.round(1000 / 140);
     this.counter = 1;
   }
 
@@ -35,7 +35,33 @@ class Game {
       this.gameLoop();
       this.counter++;
       if (this.counter % 200 === 0) {
-        this.obstacles.push(new Obstacle(this.gameScreen));
+        const randomNum = Math.round(Math.random()); // 0 or 1
+        // let isPrize = false;
+        // if (randomNum === 1) {
+        //  isPrize = true;
+        // }
+
+        const isPrize = randomNum === 1 ? true : false;
+
+        const obstacleImages = [
+          "../images/barril-vinho.png",
+          "../images/eletrico-Lisboa.png",
+        ];
+
+        const prizeImages = [
+          "../images/pastel-de-nata.png",
+          "../images/Porto-wine.png",
+        ];
+        //escolher aleatoriamente 1 obstaculo
+        const randomImgPosition = Math.floor(Math.random() * 2);
+        let image;
+        if (isPrize) {
+          image = prizeImages[randomImgPosition];
+        } else {
+          image = obstacleImages[randomImgPosition];
+        }
+
+        this.obstacles.push(new Obstacle(this.gameScreen, isPrize, image));
       }
     }, this.gameLoopFrequency);
   }
@@ -48,27 +74,28 @@ class Game {
       oneObstacle.move();
 
       if (this.player.didColide(oneObstacle)) {
-        console.log("crush!");
+        if (oneObstacle.prize) {
+          this.score += 3;
+          this.scoreElement.innerText = this.score;
+        } else {
+          this.lives--;
+          this.livesElement.innerText = this.lives;
+
+          if (this.lives === 0) {
+            this.endGame();
+          }
+        }
+
         this.obstacles.splice(i, 1);
         i--;
         oneObstacle.element.remove();
-
-        this.lives--;
-        this.livesElement.innerText = this.lives;
-
-        if (this.lives === 0) {
-          this.endGame();
-        }
-      }
-
-      if (oneObstacle.top > 500) {
+      } else if (oneObstacle.top > 500) {
         this.obstacles.splice(i, 1);
         i--;
         this.score++;
+        this.scoreElement.innerText = this.score;
 
         oneObstacle.element.remove();
-        //isto é para aparecer no ecra o score - DOM
-        this.scoreElement.innerText = this.score;
       }
     }
 
@@ -80,7 +107,6 @@ class Game {
   }
 
   update() {
-    console.log("This is the game update!");
     this.player.move();
   }
 
@@ -98,27 +124,3 @@ class Game {
     this.gameEndScreen.style.display = "block";
   }
 }
-
-/// aquiiii
-
-// handleCollisions () {
-//this.obstacles.forEach((obstacle) => {
-//if (this.player.didColide(obstacle)) {
-//if (obstacle.element.src.includes('belem-tower.png') || obstacle.element.src.includes("barril-vinho") || obstacle.element.src.includes("eletrico-Lisboa")) {
-// this.lives--;
-// console.log("Menos uma vida!", this.lives);
-//  this.livesElement.innerText = this.lives;
-
-// } else if (obstacle.element.src.includes("pastel-de-nata") || obstacle.element.src.includes("Porto-wine")) {
-//   this.score++;
-//  console.log("Mais um score!", this.score);
-//this.scoreElement.innerText = this.score;
-// }
-
-//  obstacle.element.remove();
-// }
-
-//  });
-// }
-
-//}
