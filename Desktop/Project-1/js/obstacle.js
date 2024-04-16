@@ -22,11 +22,14 @@ class Obstacle {
     this.gameScreen.appendChild(this.element);
   }
 
+  //Método que move os obstáculos para baixo
   move() {
-    this.top += 3;
+    //Aumentar o speed dos obstáculos 2 -> 4
+    this.top += 4;
     this.updatePosition();
   }
 
+  //Método para atualizar a posição obstáculo
   updatePosition() {
     this.element.style.top = `${this.top}px`;
   }

@@ -16,9 +16,12 @@ class Player {
     this.element.style.left = `${this.left}px`;
     this.gameScreen.appendChild(this.element);
   }
+
+  //Método para mover o jogador
   move() {
     this.left += this.directionX;
     this.top += this.directionY;
+
     if (this.left < 160) {
       this.left = 160;
     }
