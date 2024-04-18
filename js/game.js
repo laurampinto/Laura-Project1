@@ -11,7 +11,7 @@ class Game {
       450,
       60,
       60,
-      "../images/explorer-woman.png"
+      "./images/explorer-woman.png"
     );
     this.height = 490;
     this.width = 500;
@@ -40,12 +40,12 @@ class Game {
         const randomNum = Math.round(Math.random());
         const isPrize = randomNum === 1 ? true : false; //0 ou 1
         const obstacleImages = [
-          "../images/barril-vinho.png",
-          "../images/eletrico-Lisboa.png",
+          "./images/barril-vinho.png",
+          "./images/eletrico-Lisboa.png",
         ];
         const prizeImages = [
-          "../images/pastel-de-nata.png",
-          "../images/Porto-wine.png",
+          "./images/pastel-de-nata.png",
+          "./images/Porto-wine.png",
         ];
         const randomImgPosition = Math.floor(Math.random() * 2);
         let image;
@@ -71,7 +71,6 @@ class Game {
           this.playDeliciousSound(); //Tocar o som Delicious
           this.score += 3;
           this.scoreElement.innerText = this.score;
-
         } else {
           this.playOhNoSound(); //Toca o som Oh No
           this.lives--;
