@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <title>Portuguese Explorer</title>
+  </head>
+  <body>
+    <main>
+      <!-- #game-intro screen -->
+      <div id="game-intro">
+        <img src="./images/image-PT.png" alt="" class="logo-img" />
+        <br />
+        <button id="start-button">Start Game</button>
+        <p>Use the left and right arrow to control the portuguese explorer!</p>
+        <p>Collect "Port wine" and "Pastéis de Belém" for a higher score...</p>
+        <img src="./images/left-and-right.png" alt="" class="arrows-img" />
+      </div>
+
+      <!-- #game-container screen -->
+      <div id="game-container">
+        <div>
+          <h2>Stats</h2>
+          <p>Score: <span id="score">0</span></p>
+          <p>Lives: <span id="lives">3</span></p>
+          <audio id="background-music" src="./music/Quim Barreiros - A Cabritinha (Official Video).mp4" type="audio/mp4" loop autoplay></audio>
+          <audio id="deliciousSound" src="./music/Delicious!.mp4" type="audio/mp4"></audio>
+          <audio id="ohNoSound" src="./music/Oh No!.mp4" type="audio/mp4"></audio>
+        </div>
+        <div id="game-screen"></div>
+      </div>
+
+      <!-- #game-end screen -->
+      <div id="game-end">
+        <img src="./images/image-PT.png" alt="" class="logo-img" />
+        <h1>Game Over</h1>
+        <br />
+        <button id="restart-button">Restart</button>
+      </div>
+    </main>
+
+    <script type="text/javascript" src="js/obstacle.js"></script>
+    <script type="text/javascript" src="js/player.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+  </body>
+</html>
